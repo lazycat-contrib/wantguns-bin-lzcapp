@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/wantguns-bin.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: wantguns-bin
+build:
+  run_buildscript: false
+images:
+  # 上游有完整三段 SemVer tag（v0.1.1~v1.0.0），排除 latest/master/amd64/arm64
+  - id: wantguns-bin
+    target: service
+    service: wantguns-bin
+    source: wantguns/bin
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    changelog_locales: [zh, en]
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Bin
+    summary: "高度有主见、极简的 Pastebin 文本分享工具"

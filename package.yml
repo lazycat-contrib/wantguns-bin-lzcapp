@@ -1,0 +1,14 @@
+package: cloud.lazycat.app.wantguns-bin
+version: 1.0.0
+name: Bin
+description: "highly opinionated, minimal pastebin"
+min_os_version: "1.5.0"
+homepage: https://github.com/wantguns/bin
+author: wantguns
+locales:
+  zh:
+    description: "高度有主见、极简的 Pastebin 文本分享工具"
+    name: Bin
+  en:
+    description: "highly opinionated, minimal pastebin"
+    name: Bin

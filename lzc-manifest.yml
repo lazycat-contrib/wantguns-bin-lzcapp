@@ -1,0 +1,18 @@
+application:
+  subdomain: wantguns-bin
+  background_task: true
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://wantguns-bin:6162/
+services:
+  wantguns-bin:
+    # upstream: wantguns/bin:v1.0.0
+    image: wantguns/bin:v1.0.0
+    environment:
+      - ROCKET_PORT=6162
+      - THEME=
+      - HOST_URL=${LAZYCAT_APP_DOMAIN}
+    binds:
+      - /lzcapp/var/upload:/app/upload
