@@ -9,7 +9,7 @@ application:
 services:
   wantguns-bin:
     # upstream: wantguns/bin:v1.0.0
-    image: wantguns/bin:v1.0.0
+    image: registry.lazycat.cloud/czyt/wantguns/bin:f07391ce704adbe8
     environment:
       - ROCKET_PORT=6162
       - THEME=
